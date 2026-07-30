@@ -1,106 +1,293 @@
-# E-commerce Backend API
+# Ecommerce API 🛒
 
-A modern RESTful e-commerce backend built with **Spring Boot 4**. This project provides a secure and scalable API for managing products and users, with JWT authentication and OpenAPI documentation.
+A RESTful backend API for an e-commerce platform built with Spring Boot.
 
-## 🚀 Features
+This project provides secure and scalable APIs for managing users, products, categories, orders, and authentication using JWT.
 
-* RESTful API
-* JWT Authentication & Authorization
-* Spring Security
-* Product CRUD operations
-* Request validation
-* Global exception handling
-* Swagger / OpenAPI documentation
-* MySQL database
-* JPA / Hibernate
-* Unit & Integration Tests
-* Docker support *(coming soon)*
+---
 
-## 🛠️ Technologies
+## 🚀 Technologies
 
 * Java 21
 * Spring Boot 4
 * Spring Security
+* JWT Authentication
 * Spring Data JPA
 * Hibernate
 * MySQL
 * Maven
+* Docker
 * Swagger / OpenAPI
-* JUnit & Mockito
-* Docker *(coming soon)*
+* JUnit 5
+* Mockito
 
-## 📁 Project Structure
+---
 
-```text
-src/
-├── main/
-│   ├── controller/
-│   ├── service/
-│   ├── repository/
-│   ├── entity/
-│   ├── dto/
-│   ├── mapper/
-│   ├── security/
-│   ├── exception/
-│   └── config/
-└── test/
+## 🏗️ Architecture
+
+The application follows a layered architecture:
+
+```
+Controller Layer
+        |
+        v
+Service Layer
+        |
+        v
+Repository Layer
+        |
+        v
+Database (MySQL)
 ```
 
-## ▶️ Getting Started
+The project is organized following clean code principles with separation of responsibilities between:
 
-### Clone the repository
+* Controllers: Handle HTTP requests and responses
+* Services: Business logic
+* Repositories: Database access
+* DTOs: Data transfer between layers
+* Entities: Database models
+* Security: Authentication and authorization
+
+---
+
+## ✨ Features
+
+## 🔐 Authentication & Security
+
+* User registration
+* User authentication
+* JWT token generation
+* JWT validation filter
+* Role-based authorization
+* Protected REST endpoints
+
+---
+
+## 👤 User Management
+
+* Create users
+* Update user information
+* Manage user roles
+* Secure user access
+
+---
+
+## 📦 Product Management
+
+* Create products
+* Update products
+* Delete products
+* Retrieve products
+* Product search functionality
+
+---
+
+## 🗂️ Category Management
+
+* Create categories
+* Update categories
+* Delete categories
+* Associate products with categories
+
+---
+
+## 🛒 Order Management
+
+* Create customer orders
+* Manage order status
+* Retrieve customer orders
+* Handle order details
+
+---
+
+## 📂 Project Structure
+
+```
+src/main/java/com/example/ecommerce
+
+├── config
+│   ├── SecurityConfig
+│   └── OpenApiConfig
+│
+├── controller
+│   ├── AuthController
+│   ├── ProductController
+│   └── OrderController
+│
+├── dto
+│
+├── entity
+│
+├── exception
+│
+├── mapper
+│
+├── repository
+│
+├── security
+│   ├── JwtFilter
+│   └── JwtService
+│
+└── service
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ecommerce-backend.git
+git clone https://github.com/youbirox/ecommerce-api.git
 ```
 
-### Run the application
+Navigate into the project:
+
+```bash
+cd ecommerce-api
+```
+
+---
+
+## 🗄️ Database Configuration
+
+Create a MySQL database:
+
+```sql
+CREATE DATABASE ecommerce;
+```
+
+Configure your database connection in:
+
+```
+src/main/resources/application.properties
+```
+
+Example:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+spring.datasource.username=root
+spring.datasource.password=password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+---
+
+## ▶️ Run the Application
+
+Using Maven Wrapper:
+
+Linux / Mac:
+
+```bash
+./mvnw spring-boot:run
+```
+
+Windows:
+
+```bash
+mvnw.cmd spring-boot:run
+```
+
+Or with Maven:
 
 ```bash
 mvn spring-boot:run
 ```
 
-The API will be available at:
-
-```text
-http://localhost:8080
-```
+---
 
 ## 📖 API Documentation
 
-After starting the application, Swagger UI is available at:
+Swagger UI is available at:
 
-```text
-http://localhost:8080/swagger-ui.html
 ```
-
-or
-
-```text
 http://localhost:8080/swagger-ui/index.html
 ```
 
-(depending on your configuration)
+API documentation is generated using OpenAPI 3.
+
+---
 
 ## 🧪 Running Tests
+
+Execute tests with:
+
+```bash
+./mvnw test
+```
+
+or:
 
 ```bash
 mvn test
 ```
 
-## 📌 Roadmap
+Tests include:
 
-* [x] Product CRUD
-* [x] DTO Mapping
-* [x] Validation
-* [x] Global Exception Handling
-* [x] JWT Authentication
-* [x] Swagger Documentation
-* [ ] Docker
-* [ ] Docker Compose
-* [ ] React Frontend
-* [ ] CI/CD
+* Controller tests
+* Service tests
+* Security tests
+
+---
+
+## 🐳 Docker Support
+
+Build Docker image:
+
+```bash
+docker build -t ecommerce-api .
+```
+
+Run container:
+
+```bash
+docker run -p 8080:8080 ecommerce-api
+```
+
+---
+
+## 🔄 Git Workflow
+
+The project uses Git branches:
+
+```
+main
+ |
+ └── develop
+      |
+      └── feature/*
+```
+
+* `main`: Stable production version
+* `develop`: Active development
+* `feature/*`: New features
+
+---
+
+## 🚀 Future Improvements
+
+* Docker Compose environment (Spring Boot + MySQL)
+* Redis caching
+* Payment integration
+* CI/CD with GitHub Actions
+* SonarQube code quality analysis
+* AWS deployment
+* Monitoring with Prometheus and Grafana
+* Kubernetes deployment
+
+---
 
 ## 👨‍💻 Author
 
-Developed by **Ayoub Moutii**.
+**Ayoub Moutii**
+
+Backend Developer | Spring Boot | DevOps | Cybersecurity
+
+---
+
+⭐ If you find this project useful, feel free to star the repository.
